@@ -1,4 +1,5 @@
 import Home from "./routes/Home";
+import Page from "./routes/Page";
 import {
   BrowserRouter as Router,
   Routes,
@@ -10,7 +11,8 @@ function App()
   return (
     <Router basename={process.env.PUBLIC_URL}>
     <Routes>
-      <Route path="/" element={<Home />}></Route>
+      <Route path="/" element={<Home />} />
+      <Route path="/page/:digitId" element={<Page /> } />
     </Routes>
   </Router>
   );
