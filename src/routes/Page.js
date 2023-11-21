@@ -27,8 +27,9 @@ function Page() {
     }
     getInfo(digitId)
     return <div>
+        <div>
         {streamInfo &&  JSON.stringify(streamInfo)}
-        {digitId}
+        </div>
     </div>
 }
 

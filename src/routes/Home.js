@@ -2,6 +2,8 @@ import { useState, useEffect } from "react"
 import Stream from "./Stream";
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import MainNavBar from "./Navbar";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Headers = { "Client-Id": '6duqv66y6u4rsy9s1ktrmutyusw4p7', "Authorization": "Bearer " + 'qhnxjxau3jxtkx3dlt6gqnht9n4psm' }
 
@@ -76,8 +78,8 @@ function Home() {
             handleSearchButtonClick()
         }
     }
-    const handleSearchButtonClick = async () => { // '검색' 버튼 클릭 시 문서 존재 여부 확인하고 있으면 이동
-        const result = await getId(inputValue)
+    const handleSearchButtonClick =  async (searchValue) => { // '검색' 버튼 클릭 시 문서 존재 여부 확인하고 있으면 이동
+        const result = await getId(searchValue)
         setInputValue('')
         if (result && !result.error && result.data[0] && streamers && streamers.some(item => item.digitId == result.data[0].id)) {handlePageNavigation(result.data[0].id)}
     }
@@ -108,6 +110,7 @@ function Home() {
         setStreamers([])
     };
     return <div>
+        <MainNavBar onSearch={handleSearchButtonClick} />
         <input
             type="text"
             value={inputValue}
@@ -151,9 +154,7 @@ function Home() {
         <div>
         {streamers.map((i, index) => (
             <div key={index}>
-                <div>
-                    {i.name}
-                </div>
+                {i.name}
                 <Link key={i.digitId} to={`/page/${i.digitId}`}>
                     <button>이동</button>
                 </Link>

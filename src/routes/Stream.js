@@ -8,9 +8,7 @@ function Stream({ streamers }) {
     return <div>
         {streamers.map((i, index) => (
             <div key={index}>
-                <div>
-                    {i.name}
-                </div>
+                {i.name}
                 <Link key={i.digitId} to={`/page/${i.digitId}`}>
                     <button>이동</button>
                 </Link>
