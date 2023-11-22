@@ -5,8 +5,12 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 
 const MainNavBar = ({ onSearch }) => {
+    const navigate = useNavigate();
     const [inputValue, setInputValue] = useState('');
     const handleSubmit = (event) => {
         event.preventDefault(); // 기본 동작 막기
@@ -17,6 +21,7 @@ const MainNavBar = ({ onSearch }) => {
     };
     const handleSearchButtonClick = () => {
         console.log(inputValue);
+        navigate('/result');
         onSearch(inputValue)
     }
     useEffect(() => {
@@ -25,7 +30,7 @@ const MainNavBar = ({ onSearch }) => {
     return (
         <Navbar data-bs-theme="dark" expand="lg" className="bg-body">
             <Container fluid>
-                <Navbar.Brand href="/#">Twitchwiki</Navbar.Brand>
+                <Navbar.Brand href="/">Twitchwiki</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav
@@ -45,7 +50,7 @@ const MainNavBar = ({ onSearch }) => {
                             onChange={handleInputChange}
                             
                         />
-                        <Button variant="outline-success">Search</Button>
+                        <Button variant="outline-success" onClick={handleSubmit}>Search</Button>
                     </Form>
                 </Navbar.Collapse>
             </Container>
