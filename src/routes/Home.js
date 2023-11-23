@@ -16,8 +16,9 @@ function Home({ streamers, onSearch }) {
 
         <div>
             {streamers.map((i, index) => (
+
                 <div key={index}>
-                    {i.name}
+                    {i.name} {i.startTime}
                     <Link key={i.digitId} to={`/page/${i.digitId}`}>
                         <button onClick={() => handleMoveButtonClick(i.digitId)}>이동</button>
                     </Link>

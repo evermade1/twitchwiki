@@ -25,8 +25,7 @@ function App() {
     const [name, setName] = useState() // 스트리머 이름
     const [streamers, setStreamers] = useState([]) // 페이지가 존재하는 스트리머 정보 담는 배열
 
-    useEffect(() => {
-        // 로컬 스토리지에서 정보 꺼내오기
+    useEffect(() => { // 방송 시작 후 24시간이 지난 문서 삭제
         const storedStreamers = localStorage.getItem('streamers');
         if (storedStreamers) {
             const tmpStreamers = JSON.parse(storedStreamers)
@@ -35,6 +34,7 @@ function App() {
             localStorage.setItem('streamers', JSON.stringify(filteredTmpStreamers));
         }
       }, []);
+
   const getId = async (inputvalue) => { //api 사용하여 id에 대응하는 스트리머 정보 + 방송 정보 가져오기
     const json = await (
       await fetch(`https://api.twitch.tv/helix/users?login=${inputvalue}`, { headers: Headers })
@@ -69,20 +69,19 @@ function App() {
     return json
   }
   
-  const handleSearchButtonClick = async (searchValue) => { // '검색' 버튼 클릭 시 문서 존재 여부 확인하고 있으면 이동
+  const handleSearchButtonClick = async (searchValue) => { // '검색' 버튼 클릭 시 검색 결과창으로 이동
     const result = await getId(searchValue)
     console.log(JSON.stringify(result));
     setInputValue('')
-    // if (result && !result.error && result.data[0] && streamers && streamers.some(item => item.digitId == result.data[0].id)) { handlePageNavigation(result.data[0].id) }
   }
-  const handleMakeButtonClick = (digitId, name, startTime, viewerCount) => { // '생성' 버튼 클릭 시 스트리머 정보 저장
+  const handleMakeButtonClick = (digitId, name, startTime, viewerCount, streamInfo) => { // '생성' 버튼 클릭 시 스트리머 정보 저장
     // 숫자 아이디 - 스트리머 이름 - 시작시간 - 시청자수 순서로 저장
     const isDuplicate = streamers.some((streamer) => streamer.digitId === digitId)
     // 중복확인
     if (isDuplicate) { // 중복
         return
     }
-    const newStreamer = { digitId, name, startTime, viewerCount }
+    const newStreamer = { digitId, name, startTime, viewerCount, streamInfo }
     // 이전 배열에 새 오브젝트 추가
     const updatedStreamers = [...streamers, newStreamer]
     // 시청자수 기준으로 정렬
@@ -95,16 +94,21 @@ function App() {
   const handleMoveButtonClick = (digitId) => {
     setSearchResult(digitId)
   }
-
+  const handleClearButtonClick = () => {
+    localStorage.clear()
+    setStreamers([])
+  }
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <MainNavBar onSearch={handleSearchButtonClick} />
+      <button onClick={handleClearButtonClick}>초기화</button>
       {/* {id && id.data[0] && streamInfo && streamInfo.data[0] && <SearchResult id={id} streamInfo={streamInfo} onSearch={handleMakeButtonClick} />} */}
       <Routes>
-        <Route path="/result" element={(id && streamInfo && streamInfo.data[0]) ? <SearchResult id={id} streamInfo={streamInfo} onSearch={handleMakeButtonClick} /> : <Loading/>} />
+        <Route path="/result" element={((id && streamInfo) ? (streamInfo.data[0] ? <div><SearchResult id={id} streamInfo={streamInfo} onSearch={handleMakeButtonClick} /> {streamers && <Home streamers={streamers} onSearch={handleMoveButtonClick}/>} </div>
+        : console.log("생방송 중이 아닙니다.")) : id ? (id.error ? console.log("잘못된 아이디입니다.") : console.log("데이터가 없습니다.")) : <Loading/>)}/>
         {streamers && <Route path="/" element={<Home streamers={streamers} onSearch={handleMoveButtonClick}/>} /> }
         <Route path="/page/:searchResult"
-          element={searchResult ? <Page digitId={searchResult} /> : <Loading /> }/>
+          element={searchResult && streamers ? <Page digitId={searchResult} streamers={streamers} /> : <Loading /> }/>
         {/* <Route path="/page/:digitId"
           element={searchResult ? <Navigate to={`/page/${searchResult}`} /> : <Loading /> }/> */}
       </Routes>

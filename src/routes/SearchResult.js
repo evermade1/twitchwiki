@@ -8,13 +8,12 @@ function SearchResult({ id, streamInfo, onSearch }) {
     const startTime = kst.getTime()
     const viewerCount = streamInfo.data[0].viewer_count
     const handleMakeButtonClick = () => {
-        onSearch(digitId, name, startTime, viewerCount)
+        onSearch(digitId, name, startTime, viewerCount, streamInfo)
     }
 
     return <div>
-        <div>{JSON.stringify(id)}</div>
+        {/* <div>{JSON.stringify(id)}</div> */}
         <div>{JSON.stringify(streamInfo)}</div>
-        <div>{digitId} {name} {startTime} {viewerCount}</div>
         <button onClick={handleMakeButtonClick}>
                     생성
         </button>
