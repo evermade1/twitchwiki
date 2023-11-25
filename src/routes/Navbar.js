@@ -15,18 +15,15 @@ const MainNavBar = ({ onSearch }) => {
     const handleSubmit = (event) => {
         event.preventDefault(); // 기본 동작 막기
         handleSearchButtonClick(); // 검색 버튼 클릭 시 동일한 로직 수행
-      };
+    };
     const handleInputChange = (event) => { // input창에서 값 보여주기 위해 사용
         setInputValue(event.target.value);
     };
     const handleSearchButtonClick = () => {
         console.log(inputValue);
-        navigate('/result');
+        navigate('/search_result');
         onSearch(inputValue)
     }
-    useEffect(() => {
-        console.log(inputValue);
-    }, [])
     return (
         <Navbar data-bs-theme="dark" expand="lg" className="bg-body">
             <Container fluid>
@@ -48,9 +45,9 @@ const MainNavBar = ({ onSearch }) => {
                             type="text"
                             value={inputValue}
                             onChange={handleInputChange}
-                            
+                            style={{marginRight: '10px'}}
                         />
-                        <Button variant="outline-success" onClick={handleSubmit}>Search</Button>
+                        <Button style={{backgroundColor: "#9146FF"}} onClick={handleSubmit}>Search</Button>
                     </Form>
                 </Navbar.Collapse>
             </Container>
