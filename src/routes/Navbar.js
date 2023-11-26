@@ -45,9 +45,9 @@ const MainNavBar = ({ onSearch }) => {
                             type="text"
                             value={inputValue}
                             onChange={handleInputChange}
-                            style={{marginRight: '10px'}}
+                            style={{marginRight: '10px', }}
                         />
-                        <Button style={{backgroundColor: "#9146FF"}} onClick={handleSubmit}>Search</Button>
+                        <Button style={{backgroundColor: "#2E2E2E", borderColor: "#9146FF"}} onClick={handleSubmit}>Search</Button>
                     </Form>
                 </Navbar.Collapse>
             </Container>

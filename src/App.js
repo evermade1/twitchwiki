@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import './App.module.css'
+import Button from 'react-bootstrap/Button';
 import Streamers from "./routes/Streamers";
 import Page from "./routes/Page";
 import Loading from "./routes/Loading";
@@ -45,8 +46,13 @@ function App() {
   const handleSearchButtonClick = async (searchValue) => { // '검색' 버튼 클릭 시 아이디에 대해 검색 실행
     await getId(searchValue)
   }
-  const handleMakeButtonClick = (digitId, name, startTime, viewerCount, userInfo, streamInfo) => { // '생성' 버튼 클릭 시 스트리머 정보 저장
+  const SearchResultFunction = (makeOrMove, digitId, name, startTime, viewerCount, userInfo, streamInfo) => { // '생성' 버튼 클릭 시 스트리머 정보 저장
     // 숫자 아이디 - 스트리머 이름 - 시작시간 - 시청자수 순서로 저장
+    if (makeOrMove == 1) {
+      console.log(1);
+      handleMoveButtonClick(digitId)
+      return
+    }
     const isDuplicate = streamers.some((streamer) => streamer.digitId === digitId)
     if (isDuplicate) { return } // 중복확인
     const newStreamer = { digitId, name, startTime, viewerCount, userInfo, streamInfo }
@@ -66,9 +72,9 @@ function App() {
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <MainNavBar onSearch={handleSearchButtonClick} />
-      <button onClick={handleClearButtonClick}>초기화</button>
+      <Button style={{backgroundColor: "#2E2E2E", width: "4%", borderColor: "#9146FF"}} onClick={handleClearButtonClick}>초기화</Button>
       <Routes>
-        <Route path="/search_result" element={((userInfo && streamInfo) ? (streamInfo.data[0] ? <div><SearchResult userInfo={userInfo} streamInfo={streamInfo} onSearch={handleMakeButtonClick} /> {streamers && <Streamers onSearch={handleMoveButtonClick} />} </div>
+        <Route path="/search_result" element={((userInfo && streamInfo) ? (streamInfo.data[0] ? <div><SearchResult userInfo={userInfo} streamInfo={streamInfo} onSearch={SearchResultFunction} /> {streamers && <Streamers onSearch={handleMoveButtonClick} />} </div>
           : <div><div>생방송 중이 아닙니다.</div> {streamers && <Streamers onSearch={handleMoveButtonClick} />} </div>) 
           : userInfo ? (userInfo.error ? <div><div>잘못된 아이디입니다.</div> {streamers && <Streamers onSearch={handleMoveButtonClick} />} </div> 
           : <div><div>데이터가 없습니다.</div> {streamers && <Streamers onSearch={handleMoveButtonClick} />} </div>) : <Loading />)} />
