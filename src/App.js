@@ -46,16 +46,15 @@ function App() {
   const handleSearchButtonClick = async (searchValue) => { // '검색' 버튼 클릭 시 아이디에 대해 검색 실행
     await getId(searchValue)
   }
-  const SearchResultFunction = (makeOrMove, digitId, name, startTime, viewerCount, userInfo, streamInfo) => { // '생성' 버튼 클릭 시 스트리머 정보 저장
+  const SearchResultFunction = (makeOrMove, digitId, name, startTime, viewerCount, profileImage, userInfo, streamInfo) => { // '생성' 버튼 클릭 시 스트리머 정보 저장
     // 숫자 아이디 - 스트리머 이름 - 시작시간 - 시청자수 순서로 저장
     if (makeOrMove == 1) {
-      console.log(1);
       handleMoveButtonClick(digitId)
       return
     }
     const isDuplicate = streamers.some((streamer) => streamer.digitId === digitId)
     if (isDuplicate) { return } // 중복확인
-    const newStreamer = { digitId, name, startTime, viewerCount, userInfo, streamInfo }
+    const newStreamer = { digitId, name, startTime, viewerCount, profileImage, userInfo, streamInfo }
     const updatedStreamers = [...streamers, newStreamer] // 이전 배열에 새 오브젝트 추가
     const sortedUpdatedStreamers = [...updatedStreamers].sort((a, b) => b.viewerCount - a.viewerCount) // 시청자수 기준으로 정렬
 

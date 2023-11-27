@@ -11,15 +11,16 @@ function SearchResult({ userInfo, streamInfo, onSearch }) {
     const kst = new Date(streamInfo.data[0].started_at)
     const startTime = kst.getTime()
     const viewerCount = streamInfo.data[0].viewer_count
+    const profileImage = userInfo.data[0].profile_image_url
     const doesStreamerExist = streamers && streamers.some(v => v.digitId === digitId);
     const handleMakeButtonClick = () => {
-        onSearch(0, digitId, name, startTime, viewerCount, userInfo, streamInfo)
+        onSearch(0, digitId, name, startTime, viewerCount, profileImage, userInfo, streamInfo)
     }
     const handleMoveButtonClick = () => {
-        onSearch(1, digitId, name, startTime, viewerCount, userInfo, streamInfo)
+        onSearch(1, digitId, name, startTime, viewerCount, profileImage, userInfo, streamInfo)
     }
 
-    return <div  style={{ width: "80%", marginLeft: "2%", marginTop: "2%" }}>
+    return <div  style={{ width: "90%", marginLeft: "5%", marginTop: "2%" }}>
         <div className='searchResult' style={{
             backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(${userInfo.data[0].profile_image_url})`,
             backgroundRepeat: "no-repeat",
