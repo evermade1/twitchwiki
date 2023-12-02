@@ -4,13 +4,11 @@ import Button from 'react-bootstrap/Button';
 import { FaCircle } from "react-icons/fa";
 import ElapsedTime from './ElaspedTime';
 
-
+const Headers = { "Client-Id": '6duqv66y6u4rsy9s1ktrmutyusw4p7', "Authorization": "Bearer " + 'qhnxjxau3jxtkx3dlt6gqnht9n4psm' }
 
 function Streamers({ onSearch }) {
     const storedStreamers = localStorage.getItem('streamers');
     const streamers = JSON.parse(storedStreamers)
-    
-    
     const handleMoveButtonClick = (digitId) => { // '이동' 버튼 클릭 시 해당 문서로 이동
         onSearch(digitId)
     }
@@ -31,11 +29,19 @@ function Streamers({ onSearch }) {
                     <img src={i.profileImage} style={{ width: '80px', height: '80px', marginLeft: '20px', borderRadius: "15px" }}></img>
                     <div style={{ display: 'flex', flexDirection: 'column', marginLeft: "20px" }}>
                         <div style={{ fontWeight: 600, fontSize: 20 }}>{i.name} ({i.id})</div>
-                        <ElapsedTime style={{ fontSize: 15 }} time={i.startTime} />
-                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: "center" }}>
-                            <FaCircle style={{ fontSize: "10px", color: "red", marginRight: 5, marginTop: 2 }} />
-                            <div style={{ fontSize: 15 }}>{i.viewerCount.toLocaleString()}</div>
-                        </div>
+                        {i.viewerCount ? <div>
+                            <ElapsedTime style={{ fontSize: 15 }} time={i.startTime} />
+                            <div style={{ display: 'flex', flexDirection: 'row', alignItems: "center" }}>
+                                <FaCircle style={{ fontSize: "10px", color: "red", marginRight: 5, marginTop: 2 }} />
+                                <div style={{ fontSize: 15 }}>{i.viewerCount.toLocaleString()}</div>
+                            </div></div> :
+                            <div>
+                                <div style={{ display: 'flex', flexDirection: 'row', alignItems: "center" }}>
+                                    <FaCircle style={{ fontSize: "10px", color: "gray", marginRight: 5, marginTop: 2 }} />
+                                    <div style={{ fontSize: 15 }}>오프라인</div>
+                                </div>
+                            </div>
+                        }
                     </div>
                     <div style={{ position: "absolute", left: "500px" }}>
                         <Link to={`/page/${i.digitId}`} style={{ marginLeft: "20px" }}>
