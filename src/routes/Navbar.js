@@ -27,7 +27,7 @@ const MainNavBar = ({ onSearch }) => {
     return (
         <Navbar data-bs-theme="dark" expand="lg" className="bg-body">
             <Container fluid>
-                <Navbar.Brand href="/">Twitchwiki</Navbar.Brand>
+                <Navbar.Brand href="/" style={{display: 'flex', flexDirection: 'row', alignItems: 'flex-end'}}><div style={{fontSize: "20px"}}>Twitchwiki</div><div style={{marginLeft: '1px', fontSize: "10px", fontStyle: 'italic', color: '#9146FF'}}>βeta</div></Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav
