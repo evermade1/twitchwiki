@@ -2,3 +2,16 @@ body {
 background-color: #2E2E2E;
 color: white;
 }
+
+::-webkit-scrollbar {
+    width: 8px; /* 스크롤 바의 너비 */
+}
+
+::-webkit-scrollbar-track {
+    background-color: #2E2E2E; /* 스크롤 바 트랙 배경색 */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #BDBDBD; /* 스크롤 바 색상 */
+    border-radius: 6px; /* 스크롤 바 모양을 둥글게 만듭니다. */
+}
