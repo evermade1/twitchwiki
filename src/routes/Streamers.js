@@ -44,8 +44,8 @@ function Streamers({ onSearch }) {
                         }
                     </div>
                     <div style={{ position: "absolute", left: "500px" }}>
-                        <Link to={`/page/${i.digitId}`} style={{ marginLeft: "20px" }}>
-                            <Button style={{ backgroundColor: "#9146FF", borderColor: "#9146FF", fontSize: 15 }} onClick={() => handleMoveButtonClick(i.digitId)}>문서로 이동</Button>
+                        <Link to={`/page/${i.id}`} style={{ marginLeft: "20px" }}>
+                            <Button style={{ backgroundColor: "#9146FF", borderColor: "#9146FF", fontSize: 15 }} onClick={() => handleMoveButtonClick(i.id)}>문서로 이동</Button>
                         </Link>
                         <Link to={`https://www.twitch.tv/${i.id}`} style={{ marginLeft: "20px" }}>
                             <Button style={{ backgroundColor: "#9146FF", borderColor: "#9146FF", fontSize: 15 }}>방송으로 이동</Button>

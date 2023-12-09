@@ -21,7 +21,7 @@ const MainNavBar = ({ onSearch }) => {
     };
     const handleSearchButtonClick = () => {
         console.log(inputValue);
-        navigate('/search_result');
+        navigate(`/search/${inputValue}`);
         onSearch(inputValue)
     }
     return (
