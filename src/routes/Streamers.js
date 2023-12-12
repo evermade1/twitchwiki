@@ -11,10 +11,10 @@ function Streamers({ onSearch }) {
     const handleMoveButtonClick = (id) => { 
         onSearch(id)
     }
-    return <div style={{ marginTop: "2%" }}>
-        <div style={{ fontWeight: 600, fontSize: 20, marginLeft: "5%", marginBottom: "10px" }}>생성된 문서</div>
+    return <div style={{ width: "70%", marginLeft: "15%", marginTop: "5%" }}>
+        <div style={{ fontWeight: 600, fontSize: 20, marginBottom: "10px" }}>생성된 문서</div>
         {streamers && streamers.map((i, index) => (
-            <div key={index} style={{ width: "90%", marginLeft: "5%", marginBottom: '15px' }}>
+            <div key={index} style={{ marginBottom: '15px' }}>
                 <div style={{
                     borderRadius: "15px",
                     border: "1.5px solid #9146FF",
@@ -42,7 +42,7 @@ function Streamers({ onSearch }) {
                             </div>
                         }
                     </div>
-                    <div style={{ position: "absolute", left: "500px" }}>
+                    <div style={{ position: "absolute", left: "50%" }}>
                         <Link to={`/page/${i.id}`} style={{ marginLeft: "20px" }}>
                             <Button style={{ backgroundColor: "#9146FF", borderColor: "#9146FF", fontSize: 15 }} onClick={() => handleMoveButtonClick(i.id)}>문서로 이동</Button>
                         </Link>

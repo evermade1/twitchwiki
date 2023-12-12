@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 import Loading from './Loading';
 import ProfileOnline from './ProfileOnline';
 import ProfileOffline from './ProfileOffline';
+import SearchResultNone from './SearchResultNone';
+import SearchResultError from './SearchResultError';
 
 
 const Headers = { "Client-Id": '6duqv66y6u4rsy9s1ktrmutyusw4p7', "Authorization": "Bearer " + 'qhnxjxau3jxtkx3dlt6gqnht9n4psm' }
@@ -12,7 +14,8 @@ const Headers = { "Client-Id": '6duqv66y6u4rsy9s1ktrmutyusw4p7', "Authorization"
 function SearchResult({ onSearch }) {
     const { moveTo } = useParams() //url에서 가져온 아이디
     const [userInfo, setUserInfo] = useState(null)
-    const [streamInfo, setStreamInfo] = useState(null) 
+    const [streamInfo, setStreamInfo] = useState(null)
+    const [operate, setOperate] = useState(false)
     const id = moveTo
     /**
      * 아이디에 해당하는 스트리머의 기본 정보 + 방송 중이라면 방송 정보를 받아오는 함수
@@ -36,18 +39,18 @@ function SearchResult({ onSearch }) {
         setUserInfo()
         setStreamInfo()
         getId(id)
+    .then(() => setOperate(true));
     }, [id])
 
-    return <div style={{ width: "90%", marginLeft: "5%", marginTop: "2%" }}>
+    return <div style={{ width: "70%", marginLeft: "15%", marginTop: "2%" }}>
         {userInfo && streamInfo ?
             (streamInfo.data[0] ?
                 <ProfileOnline userInfo={userInfo.data[0]} streamInfo={streamInfo.data[0]} onSearch={onSearch} buttonFor={'searchResult'}/>
-                : <ProfileOffline userInfo={userInfo.data[0]} onSearch={onSearch}/>
+                : <ProfileOffline userInfo={userInfo.data[0]} onSearch={onSearch} buttonFor={'searchResult'}/>
             )
-            : userInfo!=null ? (userInfo.error ?
-                <div>잘못된 아이디입니다.</div>
-                : <div>데이터가 없습니다.</div>)
-                : <Loading />}
+            : userInfo!=null && (userInfo.error ?
+                <SearchResultError />
+                : operate ? <SearchResultNone /> : null)}
         {/* <div>{JSON.stringify(userInfo)}</div> */}
     </div>
 }

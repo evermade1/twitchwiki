@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './SearchResult.module.css'
 import { FaCircle } from "react-icons/fa";
 
-function ProfileOffline({ userInfo, onSearch }) {
+function ProfileOffline({ userInfo, onSearch, buttonFor }) {
     const storedStreamers = localStorage.getItem('streamers');
     const streamers = JSON.parse(storedStreamers)
     const doesStreamerExist = streamers ? streamers.some(v => v.digitId === userInfo.id) : false
@@ -12,7 +12,7 @@ function ProfileOffline({ userInfo, onSearch }) {
         onSearch(1, userInfo.id, userInfo.login)
     }
 
-    return <div style={{ width: "90%", marginLeft: "5%", marginTop: "2%" }}>
+    return <div style={{ marginTop: "2%" }}>
         { <div className='searchResult' style={{
             backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(${userInfo.profile_image_url})`,
             backgroundRepeat: "no-repeat",
@@ -34,7 +34,8 @@ function ProfileOffline({ userInfo, onSearch }) {
                         <FaCircle style={{ fontSize: "10px", color: "gray", marginRight: 5, marginTop: 2 }} />
                         <div style={{fontSize: 15, color: "lightgray"}}>오프라인</div>
                         {doesStreamerExist &&
-                            <Link to={`/page/${userInfo.id}`}>
+                        buttonFor == 'searchResult' &&
+                            <Link to={`/page/${userInfo.login}`}>
                                 <Button style={{ backgroundColor: "#9146FF", borderColor: "#9146FF", fontSize: 15, marginLeft: "20px" }} onClick={handleMoveButtonClick}>문서로 이동</Button>
                             </Link>
                         }

@@ -25,9 +25,9 @@ const MainNavBar = ({ onSearch }) => {
         onSearch(inputValue)
     }
     return (
-        <Navbar data-bs-theme="dark" expand="lg" className="bg-body">
+        <Navbar data-bs-theme="dark" expand="lg" className="bg-body" style={{position: 'fixed', width: "100%"}}>
             <Container fluid>
-                <Navbar.Brand href="/" style={{display: 'flex', flexDirection: 'row', alignItems: 'flex-end'}}><div style={{fontSize: "20px"}}>Twitchwiki</div><div style={{marginLeft: '1px', fontSize: "10px", fontStyle: 'italic', color: '#9146FF'}}>βeta</div></Navbar.Brand>
+                <Navbar.Brand href="/" style={{display: 'flex', flexDirection: 'row', alignItems: 'flex-end'}}><div style={{fontSize: "20px", fontWeight: "600"}}>Twitchwiki</div><div style={{marginLeft: '1px', fontSize: "10px", fontStyle: 'italic', color: '#9146FF'}}>βeta</div></Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav
@@ -45,7 +45,7 @@ const MainNavBar = ({ onSearch }) => {
                             onChange={handleInputChange}
                             style={{marginRight: '10px', }}
                         />
-                        <Button style={{backgroundColor: "#2E2E2E", borderColor: "#9146FF"}} onClick={handleSubmit}>Search</Button>
+                        <Button style={{backgroundColor: "#2E2E2E", borderColor: "#9146FF", fontSize: '15px', width: "100px"}} onClick={handleSubmit}>검색</Button>
                     </Form>
                 </Navbar.Collapse>
             </Container>

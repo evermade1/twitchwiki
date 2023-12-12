@@ -43,6 +43,8 @@ function App() {
         };
       }));
       const filteredUpdatedStreamers = updatedStreamers.filter(item => item.startTime + 86400000 > Date.now());
+      const remainingStreamers = updatedStreamers.filter(item => item.startTime + 86400000 <= Date.now());
+      remainingStreamers.forEach(item => localStorage.removeItem(item.id));
       const sortedUpdatedStreamers = [...filteredUpdatedStreamers].sort((a, b) => b.viewerCount - a.viewerCount) // 시청자수 기준으로 정렬
       localStorage.setItem('streamers', JSON.stringify(sortedUpdatedStreamers));
       setStreamers(sortedUpdatedStreamers);

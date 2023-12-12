@@ -22,7 +22,7 @@ function ProfileOnline({ userInfo, streamInfo, onSearch, buttonFor }) {
         onSearch(1, userInfo.id, userInfo.login)
     }
 
-    return <div style={{ width: "90%", marginLeft: "5%", marginTop: "2%" }}>
+    return <div style={{ marginTop: "2%" }}>
         {<div className='searchResult' style={{
             backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(${userInfo.profile_image_url})`,
             backgroundRepeat: "no-repeat",
