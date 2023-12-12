@@ -1,7 +1,6 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
 import Button from 'react-bootstrap/Button';
-import { Link, useParams } from 'react-router-dom';
-import { FaCircle } from "react-icons/fa";
+import { useParams } from 'react-router-dom';
 import ProfileOnline from "./ProfileOnline";
 import ProfileOffline from "./ProfileOffline";
 import NoPage from "./NoPage";

@@ -4,13 +4,12 @@ import Button from 'react-bootstrap/Button';
 import { FaCircle } from "react-icons/fa";
 import ElapsedTime from './ElaspedTime';
 
-const Headers = { "Client-Id": '6duqv66y6u4rsy9s1ktrmutyusw4p7', "Authorization": "Bearer " + 'qhnxjxau3jxtkx3dlt6gqnht9n4psm' }
-
 function Streamers({ onSearch }) {
     const storedStreamers = localStorage.getItem('streamers');
     const streamers = JSON.parse(storedStreamers)
-    const handleMoveButtonClick = (digitId) => { // '이동' 버튼 클릭 시 해당 문서로 이동
-        onSearch(digitId)
+    /** '이동' 버튼 클릭 시 App.js로 id 전달 -> 문서로 이동 */
+    const handleMoveButtonClick = (id) => { 
+        onSearch(id)
     }
     return <div style={{ marginTop: "2%" }}>
         <div style={{ fontWeight: 600, fontSize: 20, marginLeft: "5%", marginBottom: "10px" }}>생성된 문서</div>

@@ -4,23 +4,23 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-
 
 const MainNavBar = ({ onSearch }) => {
     const navigate = useNavigate();
     const [inputValue, setInputValue] = useState('');
     const handleSubmit = (event) => {
         event.preventDefault(); // 기본 동작 막기
-        handleSearchButtonClick(); // 검색 버튼 클릭 시 동일한 로직 수행
+        handleSearchButtonClick(); // 검색 버튼 클릭 시와 동일한 로직 수행
     };
-    const handleInputChange = (event) => { // input창에서 값 보여주기 위해 사용
+    // input창에서 값 보여주기 위해 사용
+    const handleInputChange = (event) => {
         setInputValue(event.target.value);
     };
+    /**
+     * 검색 버튼 클릭 시 검색 결과 창으로 이동 + App.js에 아이디 전달하여 거기서 창 내용 만들기
+     */
     const handleSearchButtonClick = () => {
-        console.log(inputValue);
         navigate(`/search/${inputValue}`);
         onSearch(inputValue)
     }
@@ -33,12 +33,10 @@ const MainNavBar = ({ onSearch }) => {
                     <Nav
                         className="me-auto my-2 my-lg-0"
                         style={{ maxHeight: '100px' }}
-                        navbarScroll
-                    >
-
-                        <Nav.Link href="#">
+                        navbarScroll>
+                        {/* <Nav.Link href="#">
                             Link
-                        </Nav.Link>
+                        </Nav.Link> */}
                     </Nav>
                     <Form onSubmit={handleSubmit} className="d-flex">
                         <Form.Control

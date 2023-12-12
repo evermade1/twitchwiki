@@ -8,10 +8,16 @@ function ProfileOnline({ userInfo, streamInfo, onSearch, buttonFor }) {
     const storedStreamers = localStorage.getItem('streamers');
     const streamers = JSON.parse(storedStreamers)
     const doesStreamerExist = streamers ? streamers.some(v => v.digitId === userInfo.id) : false
+    /**
+     * 새 문서를 생성하는 함수
+     */
     const handleMakeButtonClick = () => {
         const startTime = new Date(streamInfo.started_at).getTime();
         onSearch(0, userInfo.id, userInfo.login, userInfo.display_name, startTime, streamInfo.viewer_count, userInfo.profile_image_url, userInfo, streamInfo)
     }
+    /**
+     * 기존 문서로 이동하는 함수
+     */
     const handleMoveButtonClick = () => {
         onSearch(1, userInfo.id, userInfo.login)
     }
