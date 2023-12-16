@@ -16,7 +16,7 @@ function Time({ time }) {
      */
     function timeFunction(time) {
         const date = new Date(time);
-        const options = { month: 'long', day: 'numeric' };
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
         const formattedDate = date.toLocaleString('ko-KR', options);
         const hours = String(Math.floor(((time / (1000 * 60 * 60)) + 9) % 24)).padStart(2, "0"); // 시
         const minutes = String(Math.floor((time / (1000 * 60)) % 60)).padStart(2, "0"); // 분

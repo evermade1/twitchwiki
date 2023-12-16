@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import { useParams } from 'react-router-dom';
 import ProfileOnline from "./ProfileOnline";
 import ProfileOffline from "./ProfileOffline";
+import { GoLightBulb } from "react-icons/go";
 import NoPage from "./NoPage";
 import Time from "./Time";
 
@@ -59,6 +60,7 @@ function Page() {
         <div style={{ marginTop: '1%', marginBottom: "5%" }}>
             {myStreamer && myStreamer.startTime && <div style={{ marginBottom: "3%", alignItems: 'center', fontSize: "15px", fontWeight: '600' }}>
                 <div style={{ display: 'flex', flexDirection: 'row' }}><Time time={myStreamer.startTime} /><div style={{ marginLeft: "5px" }}>시작</div></div>
+                <div style={{color: 'gray', fontSize: '13px', fontWeight: '500', alignItems: 'center', fontStyle: 'italic', display: 'flex', flexDirection: 'row', alignItems: 'center'}}><GoLightBulb style={{marginRight: '3px'}}/>문서는 방송 시작 시간에서 24시간이 경과하면 자동 삭제됩니다.</div>
             </div>}
             {!editPage && <Button style={{ backgroundColor: "#2E2E2E", borderColor: "#9146FF", width: '100px' }} onClick={handleEditButtonClick} >편집</Button>}
             {editPage && <Button style={{ backgroundColor: "#9146FF", borderColor: "#9146FF", width: '100px', color: 'white' }} onClick={handleEditButtonClick} >완료</Button>}

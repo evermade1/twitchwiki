@@ -36,6 +36,7 @@ function SearchResult({ onSearch }) {
         return json
     }
     useEffect(() => {
+        setOperate(false)
         setUserInfo()
         setStreamInfo()
         getId(id)

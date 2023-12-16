@@ -22,7 +22,7 @@ function ProfileOnline({ userInfo, streamInfo, onSearch, buttonFor }) {
         onSearch(1, userInfo.id, userInfo.login)
     }
 
-    return <div style={{ marginTop: "2%" }}>
+    return <div style={{ marginTop: "5%" }}>
         {<div className='searchResult' style={{
             backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(${userInfo.profile_image_url})`,
             backgroundRepeat: "no-repeat",
@@ -34,7 +34,7 @@ function ProfileOnline({ userInfo, streamInfo, onSearch, buttonFor }) {
             overflow: "hidden"
         }}>
             <div style={{ padding: "1%", display: "flex", flexDirection: "row" }}>
-                <img src={userInfo.profile_image_url} style={{ width: '150px', height: '150px', borderRadius: "15px" }}></img>
+                <img src={userInfo.profile_image_url} style={{ width: '150px', height: '150px', borderRadius: "15px", marginLeft: '5px' }}></img>
                 <div style={{ marginLeft: "20px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                     <div>
                         <div style={{ fontWeight: 600, fontSize: 24, margin: 5 }}>{userInfo.display_name} ({userInfo.login})</div>

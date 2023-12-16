@@ -23,26 +23,29 @@ function Streamers({ onSearch }) {
                     overflow: "hidden",
                     display: 'flex',
                     flexDirection: "row",
-                    alignItems: "center"
+                    alignItems: "center",
+                    justifyContent: 'space-between'
                 }}>
-                    <img src={i.profileImage} style={{ width: '80px', height: '80px', marginLeft: '20px', borderRadius: "15px" }}></img>
+                    <div style={{display: 'flex', flexDirection: "row", alignItems: "center"}} >
+                    <img src={i.profileImage} style={{ width: '80px', height: '80px', marginLeft: '20px', borderRadius: "15px"}}></img>
                     <div style={{ display: 'flex', flexDirection: 'column', marginLeft: "20px" }}>
-                        <div style={{ fontWeight: 600, fontSize: 20 }}>{i.name} ({i.id})</div>
+                        <div style={{ fontWeight: 600, fontSize: '18px' }}>{i.name} ({i.id})</div>
                         {i.viewerCount ? <div>
-                            <ElapsedTime style={{ fontSize: 15 }} time={i.startTime} />
+                            <ElapsedTime style={{ fontSize: '13px' }} time={i.startTime} />
                             <div style={{ display: 'flex', flexDirection: 'row', alignItems: "center" }}>
                                 <FaCircle style={{ fontSize: "10px", color: "red", marginRight: 5, marginTop: 2 }} />
-                                <div style={{ fontSize: 15 }}>{i.viewerCount.toLocaleString()}</div>
+                                <div style={{ fontSize: '14px' }}>{i.viewerCount.toLocaleString()}</div>
                             </div></div> :
                             <div>
                                 <div style={{ display: 'flex', flexDirection: 'row', alignItems: "center" }}>
                                     <FaCircle style={{ fontSize: "10px", color: "gray", marginRight: 5, marginTop: 2 }} />
-                                    <div style={{ fontSize: 15 }}>오프라인</div>
+                                    <div style={{ fontSize: '14px', color: 'gray' }}>오프라인</div>
                                 </div>
                             </div>
                         }
                     </div>
-                    <div style={{ position: "absolute", left: "50%" }}>
+                    </div>
+                    <div style={{marginRight: '20px'}}>
                         <Link to={`/page/${i.id}`} style={{ marginLeft: "20px" }}>
                             <Button style={{ backgroundColor: "#9146FF", borderColor: "#9146FF", fontSize: 15 }} onClick={() => handleMoveButtonClick(i.id)}>문서로 이동</Button>
                         </Link>

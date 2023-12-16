@@ -43,7 +43,8 @@ const MainNavBar = ({ onSearch }) => {
                             type="text"
                             value={inputValue}
                             onChange={handleInputChange}
-                            style={{marginRight: '10px', }}
+                            style={{marginRight: '10px', fontSize: '13px'}}
+                            placeholder="아이디를 입력하세요"
                         />
                         <Button style={{backgroundColor: "#2E2E2E", borderColor: "#9146FF", fontSize: '15px', width: "100px"}} onClick={handleSubmit}>검색</Button>
                     </Form>
