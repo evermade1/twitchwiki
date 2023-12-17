@@ -12,7 +12,11 @@ function Streamers({ onSearch }) {
         onSearch(id)
     }
     return <div style={{ width: "70%", marginLeft: "15%", marginTop: "5%" }}>
+        <div style={{borderTop: '1px solid #424242', marginBottom: '50px'}} />
         <div style={{ fontWeight: 600, fontSize: 20, marginBottom: "10px" }}>생성된 문서</div>
+        {!streamers && <div style={{marginTop: '25px', fontSize: '15px', color: 'gray'}}>
+            등록된 문서가 없습니다. 현재 방송 중인 스트리머를 검색하여 직접 문서를 생성해 보세요.
+            </div>}
         {streamers && streamers.map((i, index) => (
             <div key={index} style={{ marginBottom: '15px' }}>
                 <div style={{
@@ -31,7 +35,7 @@ function Streamers({ onSearch }) {
                     <div style={{ display: 'flex', flexDirection: 'column', marginLeft: "20px" }}>
                         <div style={{ fontWeight: 600, fontSize: '18px' }}>{i.name} ({i.id})</div>
                         {i.viewerCount ? <div>
-                            <ElapsedTime style={{ fontSize: '13px' }} time={i.startTime} />
+                            <ElapsedTime style={{ fontSize: '10px' }} time={i.startTime} />
                             <div style={{ display: 'flex', flexDirection: 'row', alignItems: "center" }}>
                                 <FaCircle style={{ fontSize: "10px", color: "red", marginRight: 5, marginTop: 2 }} />
                                 <div style={{ fontSize: '14px' }}>{i.viewerCount.toLocaleString()}</div>

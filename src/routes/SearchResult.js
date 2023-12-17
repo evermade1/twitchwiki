@@ -51,7 +51,7 @@ function SearchResult({ onSearch }) {
             )
             : userInfo!=null && (userInfo.error ?
                 <SearchResultError />
-                : operate ? <SearchResultNone /> : null)}
+                : operate ? <SearchResultNone /> : null )}
         {/* <div>{JSON.stringify(userInfo)}</div> */}
     </div>
 }

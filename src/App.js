@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import './App.module.css'
+import Home from "./routes/Home";
 import Button from 'react-bootstrap/Button';
 import Streamers from "./routes/Streamers";
 import Page from "./routes/Page";
@@ -96,13 +97,14 @@ function App() {
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <MainNavBar onSearch={handleSearchButtonClick} />
-      <Button style={{ backgroundColor: "#2E2E2E", width: "100px", marginLeft: "10px", marginTop: "10px", borderColor: "#9146FF" }} onClick={handleClearButtonClick}>초기화</Button>
+      {/* <Button style={{ backgroundColor: "#2E2E2E", width: "100px", marginLeft: "10px", borderColor: "#9146FF" }} onClick={handleClearButtonClick}>초기화</Button> */}
       <Routes>
-        <Route path="/" element={<Streamers onSearch={handleMoveButtonClick} />} />
+        <Route path="/" element={<div><Home /><Streamers onSearch={handleMoveButtonClick} /></div>} />
         <Route path="/search/:moveTo"
           element={<div><SearchResult onSearch={SearchResultFunction} /><Streamers onSearch={handleMoveButtonClick} /></div>} />
         <Route path="/page/:moveTo" element={<Page />} />
       </Routes>
+
     </Router>
   );
 }

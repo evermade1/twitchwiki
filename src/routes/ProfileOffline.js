@@ -12,7 +12,7 @@ function ProfileOffline({ userInfo, onSearch, buttonFor }) {
         onSearch(1, userInfo.id, userInfo.login)
     }
 
-    return <div style={{ marginTop: "5%" }}>
+    return <div style={{ marginTop: "12%" }}>
         {<div className='searchResult' style={{
             backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(${userInfo.profile_image_url})`,
             backgroundRepeat: "no-repeat",

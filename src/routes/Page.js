@@ -62,6 +62,8 @@ function Page() {
                 <div style={{ display: 'flex', flexDirection: 'row' }}><Time time={myStreamer.startTime} /><div style={{ marginLeft: "5px" }}>시작</div></div>
                 <div style={{color: 'gray', fontSize: '13px', fontWeight: '500', alignItems: 'center', fontStyle: 'italic', display: 'flex', flexDirection: 'row', alignItems: 'center'}}><GoLightBulb style={{marginRight: '3px'}}/>문서는 방송 시작 시간에서 24시간이 경과하면 자동 삭제됩니다.</div>
             </div>}
+            <div style={{borderTop: '1px solid #424242', marginBottom: '40px'}} />
+
             {!editPage && <Button style={{ backgroundColor: "#2E2E2E", borderColor: "#9146FF", width: '100px' }} onClick={handleEditButtonClick} >편집</Button>}
             {editPage && <Button style={{ backgroundColor: "#9146FF", borderColor: "#9146FF", width: '100px', color: 'white' }} onClick={handleEditButtonClick} >완료</Button>}
             {!editPage && <div style={{ marginTop: "20px", width: "100%", minHeight: "200px", lineHeight: "22px", fontSize: "15px", whiteSpace: 'pre-line', border: '1px solid #9146FF', 

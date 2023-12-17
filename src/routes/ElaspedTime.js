@@ -23,7 +23,7 @@ function ElapsedTime({ time }) {
     const seconds = String(Math.floor((timeDiff / 1000) % 60)).padStart(2, "0"); // 초
     return `${hours}:${minutes}:${seconds}`
 }
-  return <div>{elapsedTime}</div>;
+  return <div style={{fontSize: '15px'}}>{elapsedTime}</div>;
 }
 
 export default ElapsedTime;

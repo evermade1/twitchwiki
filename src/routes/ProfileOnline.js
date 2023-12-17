@@ -22,7 +22,7 @@ function ProfileOnline({ userInfo, streamInfo, onSearch, buttonFor }) {
         onSearch(1, userInfo.id, userInfo.login)
     }
 
-    return <div style={{ marginTop: "5%" }}>
+    return <div style={{ marginTop: "12%" }}>
         {<div className='searchResult' style={{
             backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(${userInfo.profile_image_url})`,
             backgroundRepeat: "no-repeat",
@@ -42,7 +42,7 @@ function ProfileOnline({ userInfo, streamInfo, onSearch, buttonFor }) {
                         <div style={{ fontSize: 15, marginLeft: 5, marginTop: 5 }}>{streamInfo.game_name}</div>
 
                     </div>
-                    <div style={{ display: "flex", flexDirection: "row", alignItems: "center", marginLeft: 5, marginBottom: 10 }}>
+                    <div style={{ display: "flex", flexDirection: "row", alignItems: "center", marginLeft: 5, marginBottom: 10, marginTop: 10 }}>
                         <FaCircle style={{ fontSize: "10px", color: "red", marginRight: 5, marginTop: 2 }} />
                         <div style={{ fontSize: 15 }}>{streamInfo.viewer_count.toLocaleString()}</div>
                         {doesStreamerExist ?
