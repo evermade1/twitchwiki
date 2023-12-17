@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/twitchwiki/static/css/main.3d7e71ac.css",
-    "main.js": "/twitchwiki/static/js/main.30cec034.js",
+    "main.js": "/twitchwiki/static/js/main.8eac8b2a.js",
     "index.html": "/twitchwiki/index.html",
     "main.3d7e71ac.css.map": "/twitchwiki/static/css/main.3d7e71ac.css.map",
-    "main.30cec034.js.map": "/twitchwiki/static/js/main.30cec034.js.map"
+    "main.8eac8b2a.js.map": "/twitchwiki/static/js/main.8eac8b2a.js.map"
   },
   "entrypoints": [
     "static/css/main.3d7e71ac.css",
-    "static/js/main.30cec034.js"
+    "static/js/main.8eac8b2a.js"
   ]
 }
