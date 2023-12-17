@@ -25,7 +25,7 @@ export const Home = () => {
             </Link>
         </div>
         {help && <div style={{ marginTop: '50px', color: 'lightgray', lineHeight: '25px' }}>
-            <div>Twitchwiki는 다시보기가 사라진 한국 트위치의 문제점을 해결하기 위해 만들었습니다.</div>
+            <div>Twitchwiki는 다시보기가 사라진 한국 트위치의 문제점을 해결하기 위해 만들어졌습니다.</div>
             <div>방송에서 일어난 일, 스트리머의 멘트 등 시청자가 궁금해 할 만한 내용이면 무엇이든, 누구든 적을 수 있고, 수정할 수 있고, 읽을 수 있습니다. </div>
             <div>원하는 방송은 '생성된 문서' 에서 직접 찾거나, 아이디로 검색할 수 있습니다.</div>
             <div style={{ borderTop: '1px solid #424242', margin: '30px 100px 20px 100px' }} />
@@ -45,7 +45,7 @@ export const Home = () => {
             <div>문서를 열람하거나, '편집' 버튼을 클릭하여 작성, 수정합니다.</div>
             <div style={{ marginTop: '20px' }}>문서는 스트리머가 방송을 시작한 시간 기준 24시간 후에 자동 삭제됩니다.</div>
             <div style={{ color: 'red' }}>사실만을 객관적으로 작성해 주시기 바랍니다.</div>
-            <div style={{ color: 'red' }}>문제가 있는 내용은 삭제될 수 있습니다.</div>
+            <div style={{ color: 'red', marginBottom: '-30px' }}>문제가 있는 내용은 삭제될 수 있습니다.</div>
         </div>}
     </div>;
 };
