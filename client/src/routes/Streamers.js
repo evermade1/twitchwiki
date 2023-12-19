@@ -3,14 +3,39 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import { FaCircle } from "react-icons/fa";
 import ElapsedTime from './ElaspedTime';
+import { useState, useEffect } from 'react';
 
 function Streamers({ onSearch }) {
-    const storedStreamers = localStorage.getItem('streamers');
-    const streamers = JSON.parse(storedStreamers)
+    const [streamers, setStreamers] = useState()
     /** '이동' 버튼 클릭 시 App.js로 id 전달 -> 문서로 이동 */
     const handleMoveButtonClick = (id) => { 
         onSearch(id)
     }
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const updateResponse = await fetch('http://localhost:5000/api/streamers', {
+        method: 'PUT', // 또는 PATCH
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        // 업데이트할 데이터 (필요에 따라 빈 객체 또는 실제 데이터 추가)
+        body: JSON.stringify({})
+      });
+            const response = await fetch('http://localhost:5000/api/streamers');
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+    
+            const result = await response.json();
+            setStreamers(result.streamers);
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          }
+        };
+    
+        fetchData();
+      }, []);
     return <div style={{ width: "70%", marginLeft: "15%", marginTop: "5%" }}>
         <div style={{borderTop: '1px solid #424242', marginBottom: '50px'}} />
         <div style={{ fontWeight: 600, fontSize: 20, marginBottom: "10px" }}>생성된 문서</div>
