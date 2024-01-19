@@ -12,7 +12,7 @@ import {
   Route,
 } from "react-router-dom"
 
-const Headers = { "Client-Id": '6duqv66y6u4rsy9s1ktrmutyusw4p7', "Authorization": "Bearer " + 'qhnxjxau3jxtkx3dlt6gqnht9n4psm' }
+const Headers = { "Client-Id": '6duqv66y6u4rsy9s1ktrmutyusw4p7', "Authorization": "Bearer " + '28t7zwwcr54x83dx5z78xzcge8z9qb' }
 
 function App() {
   const [moveTo, setMoveTo] = useState(null);
